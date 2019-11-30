@@ -1,0 +1,38 @@
+
+
+/* Sign in Tab */
+.signin{
+border:0;
+background: none;
+width: 80%;
+margin: 5px auto;
+text-align: left;
+border: 1px solid #00314f;
+border-top: none;
+border-left: none;
+border-right: none;
+padding: 14px 10px;
+margin-left: 3rem;
+outline: none;
+
+
+}
+.signButton {
+display: block;
+width: 75%;
+}
+
+.signHov:hover{
+    background:#f8f9fa;
+    color: #00314f(0, 0, 0);
+    border-bottom: 4px solid #00314f;
+  }
+  .btn-successs {
+    color: #fff;
+    background-color: #00314f;
+    border-color: #00314f;
+  }
+.txtColor{
+color: #003957;
+}
+
