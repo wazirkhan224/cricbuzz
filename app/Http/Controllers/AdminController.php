@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\Admin;
+use Redirect;
+use App\Video;
 
 class AdminController extends Controller
 {
@@ -17,69 +21,34 @@ class AdminController extends Controller
         return view('admin.dashboard.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+// live link 
+    public function liveStreaming()
     {
-        //
+        $record= Admin::all();
+        
+        return view('admin.dashboard.live-streaming')->with(compact('record'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function liveLink(Request $request){
+
+        $user = Admin::where('name','admin')->first();
+        $user->update(['live_link'=>$request->live_link]);
+        return Redirect::back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+// videos    
+    public function vidoes(){
+        return view('admin.dashboard.videos');
     }
+    public function vidoeLink(Request $request){
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $vidoe = new Video;
+        $vidoe->title = Input::get('title');
+        $vidoe->video_link = Input::get('video_link');
+        $vidoe->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        return redirect()->back();
+    } 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

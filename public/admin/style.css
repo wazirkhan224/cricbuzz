@@ -1,0 +1,9 @@
+.app-header__logo .logo-src {
+    align-items: center !important;
+    background-repeat: no-repeat !important;
+    height: 41px !important;
+    width: 30px !important;
+    background: url(assets/images/logo-inverse.png);
+    margin-right: auto !important;
+    margin-left: auto !important;
+}

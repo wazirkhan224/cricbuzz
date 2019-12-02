@@ -14,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('\themes\home\videos');
+        return view('themes.home.videos',compact('video'));
     }
 
     /**
