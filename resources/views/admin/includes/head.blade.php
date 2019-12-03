@@ -19,4 +19,7 @@
     -->
     <link href="{{asset('admin/main.css')}}" rel="stylesheet">
     <link href="{{asset('admin/style.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/datatables.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/datatables.min.css')}}" rel="stylesheet">
+
 </head>

@@ -98,7 +98,7 @@
                     </a>
                     <ul class="mm-collapse">
                         <li>
-                            <a href="#">
+                            <a href="{{route('admin_post')}}">
                                 <i class="metismenu-icon"></i>
                                 Add Posts
                             </a>

@@ -94,96 +94,26 @@
 <!--blog-->
                 <div class="container-fluid bg-light">
 
-                    <div class="container mt-5">
+                    <div class="container">
                             <div class="row">
-                                <div class="col-md-4">
+                                @foreach($posts as $post)
+                                <div class="col-md-4" style="margin:10px 0 10px 0 !important;">
 
                                     <div class="card wow animated fadeInUp">
-                                        <a href="#" style="text-decoration: none;">    <img src="images/blog1.jpg" alt="card-1" class="card-img-top">
+                                        <a href="#" style="text-decoration: none;">    <img src=" {{asset('images/'.$post->file)}}" alt="card-1" class="card-img-top"></a>
                                         <div class="card-body">
-                                            <h5 class="text-center text-success">ICC WORLD CUP 2019</h5>
-                                          </a>
-                                            <p class="wow animated fadeInUp" >In order to write a 5 paragraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
+                                            <h5 class="text-center text-success">{{$post->title}}</h5>
+                                            <p class="wow animated fadeInUp" >{{$post->description}} </p>
                                         </div>
                                     <a href="readmore.html">   <button class="blogButton" >read more</button></a>
                                     </div>
-
                                 </div>
-
-                                <div class="col-md-4">
-                                    <div class="card wow animated fadeInLeft">
-                                        <img src="images/blog2.jpg" alt="card-1" class="card-img-top">
-                                        <div class="card-body">
-                                            <h5 class="text-center text-success" >Pakistan win Champions Trophy</h5>
-                                            <p class="wow animated fadeInLeft ">In order to write a 5 paragraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
-
-                                        </div>
-                                       <a href="readmore2.html" ><button class="blogButton ">read more</button></a>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="card wow animated fadeInRight">
-                                        <img src="images/blog5.jpg" alt="card-1" class="card-img-top">
-                                        <div class="card-body">
-                                            <h5  class="text-center text-success">Pakistan vs India Series </h5>
-                                            <p class="wow animated fadeInRight">In order to write a 5 paragraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
-                                    </div>
-                                    <button class="blogButton ">read more</button>
-                                </div>
-
+                                    @endforeach
                             </div>
-                        </div>
-
-                        <div class="container mt-5">
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <div class="card wow animated fadeInUp">
-                                      <img src="images/blog4.jpg" alt="card-1" class="card-img-top">
-                                      <div class="card-body">
-                                          <h5  class="text-center text-success">Lucky England won the world cup</h5>
-                                          <p class="wow animated fadeInUp">In order to write a 5 paragraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
-                                      </div>
-                                      <button class="blogButton ">read more</button>
-                                  </div>
-                              </div>
-
-                              <div class="col-md-4">
-                                  <div class="card wow animated fadeInLeft">
-                                      <img src="images/blog3.jpg" alt="card-1" class="card-img-top">
-                                      <div class="card-body">
-                                          <h5  class="text-center text-success">ICC Test Championship 2019-2021</h5>
-                                          <p class="wow animated fadeInLeft">In order to write a 5 paragraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
-
-                                      </div>
-                                      <button class="blogButton ">read more</button>
-                                  </div>
-                              </div>
-
-                              <div class="col-md-4">
-                                  <div class="card wow animated fadeInRight">
-                                      <img src="images/blog6.jpg" alt="card-1" class="card-img-top">
-                                      <div class="card-body">
-                                          <h5  class="text-center text-success">Cricket comes home in Pakistan</h5>
-                                          <p class="wow animated fadeInRight">In order to write a 5 you have to write onlyparagraph essay you need to know necessary components it should include. Professional writers may not use this form of writing as often, but it still considered a useful academic writing exercise given to students.  </p>
-                                  </div>
-                                  <button class="blogButton ">read more</button>
-                              </div>
-
-
-                          </div>
-                      </div>
-                  </div>
-                </div>
+                     </div>
                 <br>
                 <br>
                 </div>
-
-
-
-
-
-
 
                   <!--navbar script color change-->
   <script>

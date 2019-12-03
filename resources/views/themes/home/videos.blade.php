@@ -10,8 +10,6 @@
                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                  </button>
-
-
                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav mr-auto ml-5" >
                          <li class="nav-item active">
@@ -57,9 +55,7 @@
                         <div class="row " >
                             <div class="col-md-12 text-center" >
                                 <h1 style="color: #006400" >Most Viewed Videos</h1>
-                              </div>
-
-
+                              </div>Recent Videos
                         </div>
                     </div>
 
@@ -142,86 +138,15 @@
                     <!--row 1-->
                     <div class="container mt-5">
                             <div class="row">
-                                <div class="col-md-6">
+                                @foreach($video as $videos)
+                                <div class="col-md-4" style="margin-bottom: 10px !important;">
                                     <div class="embed-responsive embed-responsive-4by3 wow animated fadeInLeftBig " data-wow-duration="2s" data-wow-delay="0s">
-                                      <iframe width="540" height="360" src="https://www.youtube.com/embed/lIDqPHjJAYs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                      <iframe width="540" height="360" src="{{$videos->video_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-
-                                    <div class="Div_Gap_Responsive embed-responsive embed-responsive-4by3 wow animated fadeInDown " data-wow-duration="2s" data-wow-delay="0s">
-                                      <iframe width="260" height="170" src="https://www.youtube.com/embed/u69Jr3ujVZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                    <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
-                                      <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                      </div>
+                                @endforeach
                                 </div>
-
-                                <div class="col-md-3">
-                                    <div class="Div_Gap_Responsive embed-responsive embed-responsive-4by3  wow animated fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
-
-                                      <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                      <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s" >
-                                        <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
                         </div>
-                        <!--row 2-->
-                        <div class="container mt-2">
-                                <div class="row">
-                                        <div class="col-md-3">
-
-                                                <div class="Div_Gap_Responsive embed-responsive embed-responsive-4by3 wow animated fadeInDown " data-wow-duration="2s" data-wow-delay="0s">
-                                                  <iframe width="260" height="170" src="https://www.youtube.com/embed/u69Jr3ujVZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                                <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
-                                                  <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                                  </div>
-                                            </div>
-                                            <div class="col-md-3">
-
-                                                    <div class="Div_Gap_Responsive embed-responsive embed-responsive-4by3 wow animated fadeInDown " data-wow-duration="2s" data-wow-delay="0s">
-                                                      <iframe width="260" height="170" src="https://www.youtube.com/embed/u69Jr3ujVZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    </div>
-                                                    <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
-                                                      <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                                      </div>
-                                                </div>
-                                    <div class="col-md-3">
-
-                                        <div class=" Div_Gap_Responsive embed-responsive embed-responsive-4by3 wow animated fadeInDown " data-wow-duration="2s" data-wow-delay="0s">
-                                          <iframe width="260" height="170" src="https://www.youtube.com/embed/u69Jr3ujVZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
-                                        <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
-                                          <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                          </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="Div_Gap_Responsive embed-responsive embed-responsive-4by3  wow animated fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
-
-                                          <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
-                                          <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s" >
-                                            <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                            </div>
                 </div>
         </div>
         <!--navbar script color change-->

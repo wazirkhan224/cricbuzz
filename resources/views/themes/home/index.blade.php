@@ -196,35 +196,12 @@
     <div class="container mt-5">
         <div class="row">
             @foreach($video as $itm)
-            <div class="col-md-6">
-
+            <div class="col-md-4" style="margin-bottom: 10px !important;">
                 <div class="embed-responsive embed-responsive-4by3 wow animated fadeInLeftBig " data-wow-duration="2s" data-wow-delay="0s">
                     <iframe width="540" height="360" src="{{ $itm->video_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             @endforeach
-            <div class="col-md-3">
-
-                <div class=" Div_Gap_Responsive embed-responsive embed-responsive-4by3 wow animated fadeInDown " data-wow-duration="2s" data-wow-delay="0s">
-                    <iframe width="260" height="170" src="https://www.youtube.com/embed/u69Jr3ujVZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class=" Div_Gap_Responsive embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s">
-                    <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class=" Div_Gap_Responsive embed-responsive embed-responsive-4by3  wow animated fadeInDown" data-wow-duration="2s" data-wow-delay="0s">
-
-                    <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="embed-responsive embed-responsive-4by3  mt-3 wow animated fadeInUp" data-wow-duration="2s" data-wow-delay="0s" >
-                    <iframe width="260" height="170" src="https://www.youtube.com/embed/aRZV1y_vKQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                </div>
-
-            </div>
         </div>
         <div class="text-center">
             <a href="videos.html"><button class="blogButton mt-5">View More</button> </a>
@@ -382,7 +359,7 @@
 
                 </div>
             </div>
-        </div>    
+        </div>
         <!-- Model -->
 
         <!--Modal 2 subscribe-->

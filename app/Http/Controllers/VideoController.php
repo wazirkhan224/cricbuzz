@@ -14,6 +14,8 @@ class VideoController extends Controller
      */
     public function index()
     {
+        $video=Video::all();
+
         return view('themes.home.videos',compact('video'));
     }
 

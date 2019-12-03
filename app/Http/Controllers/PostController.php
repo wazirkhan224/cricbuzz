@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('\themes\home\blog');
+        $posts=Post::all();
+        return view('\themes\home\blog',compact('posts'));
     }
 
     /**

@@ -22,7 +22,6 @@ class HomeController extends Controller
     {
         $stream =Admin::all();
         $video=Video::all();
-       
         return view('\themes\home\index')->with(compact('stream','video'));
     }
 
