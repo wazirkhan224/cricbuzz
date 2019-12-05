@@ -69,25 +69,6 @@
                 </li>
                 <!-- end videos category -->
 
-                <!-- upcoming series -->
-                <li class="app-sidebar__heading">Upcoming Series</li>
-                <li>
-                    <a href="#">
-                        <i class="metismenu-icon pe-7s-airplay"></i>
-                        tournaments
-                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                    </a>
-                    <ul class="mm-collapse">
-                        <li>
-                            <a href="#">
-                                <i class="metismenu-icon"></i>
-                                Matches
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- end series -->
-
                 <!-- Blog -->
                 <li class="app-sidebar__heading">Blog</li>
                 <li>
@@ -110,14 +91,14 @@
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-airplay"></i>
-                        Countries
+                        Tournament
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul class="mm-collapse">
                         <li>
-                            <a href="#">
+                            <a href="{{route('admin_upcoming-tour')}}">
                                 <i class="metismenu-icon"></i>
-                                Matches
+                                Categories
                             </a>
                         </li>
                     </ul>

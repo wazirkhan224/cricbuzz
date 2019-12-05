@@ -103,9 +103,13 @@
                                         <a href="#" style="text-decoration: none;">    <img src=" {{asset('images/'.$post->file)}}" alt="card-1" class="card-img-top"></a>
                                         <div class="card-body">
                                             <h5 class="text-center text-success">{{$post->title}}</h5>
-                                            <p class="wow animated fadeInUp" >{{$post->description}} </p>
+                                            <p class="wow animated fadeInUp" >{{str_limit($post->description,200)}} </p>
                                         </div>
-                                    <a href="readmore.html">   <button class="blogButton" >read more</button></a>
+                                    <a
+                                    href="
+     {{ route('admin_post-show',['id'=>$post->id,'slug'=>$post->slug]) }}">
+
+                                       <button class="blogButton" >read more</button></a>
                                     </div>
                                 </div>
                                     @endforeach

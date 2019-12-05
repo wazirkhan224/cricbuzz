@@ -59,6 +59,13 @@
                                     <h3 class="card-title text-center" >
                                         PosTs Lists
                                     </h3>
+                                    <p>
+                                    @if(session()->get('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
+                                    </p>
                                     <div class="col-md-12 col-md-12">
                                         <table  id="example"  class="table table-hover">
                                             <thead>
@@ -75,7 +82,7 @@
                                                 <tr class="text-center">
                                                     <td>{{$post->id}}</td>
                                                     <td>{{$post->title}}</td>
-                                                    <td>{{$post->description}}</td>
+                                                    <td>{{str_limit($post->description,100)}}</td>
                                                     <td>
                                                         <img src="{{asset('images/'.$post->file)}}" alt="" border="0" width="50px"></td>
                                                     <td class="text-center">

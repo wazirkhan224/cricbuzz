@@ -25,7 +25,7 @@
                             <div class="main-card mb-3 card" style="margin-top: 10px">
                                 <div class="card-body">
                                     <h3 class="card-title text-center" >
-                                        Posts Detail
+                                        Tours
                                     </h3>
                                     <p>
                                     @if(session()->get('success'))
@@ -34,26 +34,31 @@
                                         </div>
                                     @endif
                                     </p>
-                                    <form class="live-stream-form" method="post" action="{{route('admin_post-update',$posts->id)}}" enctype="multipart/form-data">
+                                    <form class="live-stream-form" method="post" action="{{route('admin_tour-update',$tourupdate->id)}}" enctype="multipart/form-data">
                                         @method('put')
                                         @csrf
 
                                         <div class="position-relative form-group">
-                                            <label for="title" class="">Post  Title</label>
-                                            <input type="text" name="title" id="title" placeholder="Enter  Title" class="form-control" value="{{$posts->title}}">
+                                            <label for="title" class="">upcoming  Tours</label>
+                                            <select class="mb-2 form-control" name="title">
+
+                                                    <option >
+                                                        future_series</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="position-relative form-group">
+                                            <label for="title" class="">Tour  Categories</label>
+                                            <select class="mb-2 form-control" name="tour_category">
+
+                                                <option>T20 tournaments</option>
+                                            </select>
                                         </div>
                                         <div class="position-relative form-group">
-                                            <label for="description" class="">Post  Description</label>
-                                            <textarea class="form-control" name="description" id="description"  rows="3">{{$posts->description}}</textarea>
+                                            <label for="description" class="">Body</label>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Enter  Description" rows="3">{{$tourupdate->description}}</textarea>
                                         </div>
-                                        <span style="float: right"><img src="{{asset('images/'.$posts->file)}}" alt="" border="0" width="30%"></span>
-
-
-                                        <div class="position-relative form-group"><label for="file" class="">Update  Image</label>
-                                            <input name="file" id="file" type="file" class="form-control-file" value="{{$posts->file}}">
-                                            <small class="form-text text-muted">Update image for the post</small>
-                                        </div>
-                                        <button class="mt-1 btn btn-primary" type="Submit">Update</button>
+                                        <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
                                     </form>
 
                                 </div>

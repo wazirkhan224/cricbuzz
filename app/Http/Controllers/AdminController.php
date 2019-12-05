@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 
 use validate;
 use App\Admin;
 use Redirect;
 use App\Post;
 use App\Video;
+use App\TourDesc;
+use App\CatTour;
 
 class AdminController extends Controller
 {
@@ -92,7 +95,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'required'
         ]);
 
         //image
@@ -105,7 +108,7 @@ class AdminController extends Controller
         $posts->description = Input::get('description');
         $posts->file= $photoName;
         $posts->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Created Post  Successfully!');
     }
     public function editPost(Request $request,$id)
     {
@@ -125,21 +128,106 @@ class AdminController extends Controller
             $photoName =$posts->file;
         } else {
 
-            //image
-            $photoName = time().'.'.$request->file->getClientOriginalExtension();
-            $request->file->move(public_path('images'), $photoName);
+        //image
+        $photoName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('images'), $photoName);
         }
         $posts->title =$request->get('title');
         $posts->description =$request->get('description');
         $posts->file= $photoName;
         $posts->save();
-        return redirect('/admin/post');
+        return redirect('/admin/post')->with('success', 'Updated  Post Success Fully!');
     }
 
     public function deletePost($id)
     {
         $deletepost =Post::find($id);
         $deletepost->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Delete Post !');
+    }
+
+    public function showPost($slug,$id)
+    {
+        $slug =Post::find($slug);
+        $latestp = Post::latest()->orderBy('id', 'desc')->first();
+        return view('themes.home.readmore',compact('slug','latestp'));
+    }
+    public function showPostDetail($slug,$id)
+    {
+        $post= Post::find($slug);
+        return view('themes.home.readmore2',compact('post'));
+    }
+
+//Upcoming Tour
+    public function upcomentTour()
+    {
+        $tourcat= CatTour::all();
+        $tourdetail=TourDesc::all();
+        return view('admin.dashboard.tours.upcoming-tour',compact('tourcat','tourdetail'));
+    }
+
+    public function tourDetail(Request $request)
+    {
+        $tourcat= CatTour::all();
+
+        $phone1 = CatTour::find(1)->title;
+        $phone2 = CatTour::find(2)->title;
+        $phone3 = CatTour::find(3)->title;
+
+        $request->validate([
+            'title' => 'required',
+            'tour_category' => 'required',
+            'description' => 'required'
+        ]);
+
+        //create post
+        $tour = new TourDesc;
+        if($a1= $tour->title = Input::get('title')==$phone1)
+        {
+            $tour->cat_tours_id = 1;
+        }
+        if($a1= $tour->title = Input::get('title')==$phone2)
+        {
+            $tour->cat_tours_id = 2;
+        }
+        if($a1= $tour->title = Input::get('title')==$phone3)
+        {
+            $tour->cat_tours_id = 3;
+        }
+        $tour->title = Input::get('title');
+        $tour->tour_category = Input::get('tour_category');
+        $tour->description = Input::get('description');
+        $tour->save();
+        return redirect()->back()->with('success', 'Created New Tour Record Successfully!');
+    }
+
+    public function editTour(Request $request,$id)
+    {
+        $tourupdate=TourDesc::find($id);
+        return view('admin.dashboard.tours.edit-upcoming-tour',compact('tourupdate'));
+    }
+
+    public function updateTour(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'tour_category' =>'required',
+            'description' => 'required'
+        ]);
+
+        $tourupdate=TourDesc::find($id);
+
+        $tourupdate->title =$request->get('title');
+        $tourupdate->tour_category =$request->get('tour_category');
+        $tourupdate->description =$request->get('description');
+        $tourupdate->save();
+        return redirect('/admin/tour')->with('success', 'Tour  updated Successfully!');
+    }
+
+    public function deleteTour($id)
+    {
+        $tourdelete =TourDesc::find($id);
+        $tourdelete->delete();
+        return redirect()->back()->with('success', 'Tour Record   deleted!');
     }
 }
