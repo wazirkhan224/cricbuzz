@@ -96,9 +96,21 @@
                     </a>
                     <ul class="mm-collapse">
                         <li>
+                            <a href="{{route('admin_tour-category')}}">
+                                <i class="metismenu-icon"></i>
+                                Tours Category
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{route('admin_upcoming-tour')}}">
                                 <i class="metismenu-icon"></i>
-                                Categories
+                                Tour Description
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin_tour-detail')}}">
+                                <i class="metismenu-icon"></i>
+                                Tour Detail
                             </a>
                         </li>
                     </ul>

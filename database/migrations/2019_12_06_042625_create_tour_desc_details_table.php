@@ -14,12 +14,10 @@ class CreateTourDescDetailsTable extends Migration
     public function up()
     {
         Schema::create('tour_desc_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+            //cat-tour
             $table->unsignedBigInteger ('cat_tours_id');
-            $table->foreign('cat_tours_id')
-                ->references('id')->on('cat_tours')
-                ->onDelete('cascade');
-
+            $table->unsignedBigInteger ('tour_desc_id');
             $table->string('description');
             $table->timestamps();
         });

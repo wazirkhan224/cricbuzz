@@ -46,13 +46,29 @@ Route::prefix('admin')->group(function()
 
     //upcoming series
     Route::get('/tour/','AdminController@upcomentTour')->name('admin_upcoming-tour')->middleware('auth:admin');
-    Route::post('/tour-detail/','AdminController@tourDetail')->name('admin_tour-detail')->middleware('auth:admin');
+    Route::post('/tour-create/','AdminController@tourDetail')->name('admin-tour-detail')->middleware('auth:admin');
     Route::get('/tour-edit/{id}','AdminController@editTour')->name('admin_tour-edit')->middleware('auth:admin');
     Route::put('/tour-update/{id}','AdminController@updateTour')->name('admin_tour-update')->middleware('auth:admin');
-
     Route::get('/tour-delete/{id}','AdminController@deleteTour')->name('admin_tour-delete')->middleware('auth:admin');
 
+    //Tours
+    Route::get('/tour-category/','AdminController@tourCategory')->name('admin_tour-category')->middleware('auth:admin');
+    Route::Post('/create-tc/','AdminController@createTourCategory')->name('admin_create_tc')->middleware('auth:admin');
+    Route::get('/edit-tc/{id}','AdminController@editTourCategory')->name('admin_edit_tc')->middleware('auth:admin');
+    Route::put('/update-tc/{id}','AdminController@updateTourCategory')->name('admin_update_tc')->middleware('auth:admin');
+    Route::get('/delete-tc/{id}','AdminController@deleteTourCategory')->name('admin_delete_tc')->middleware('auth:admin');
 
+//    tour detail
+    Route::get('/tour-detail/','AdminController@viewTourDetail')->name('admin_tour-detail')->middleware('auth:admin');
+    Route::post('/tourdetail-create/','AdminController@createTourDetail')->name('admin_tour-create')->middleware('auth:admin');
+    Route::get('/touredit/{id}','AdminController@editTourDetail')->name('admin_tour-detail-edit')->middleware('auth:admin');
+    Route::put('/tourdetail-update/{id}','AdminController@updateTourDetail')->name('admin_tour-detail-update')->middleware('auth:admin');
+    Route::get('/tourdetail-delete/{id}','AdminController@deleteTourDetail')->name('admin_tour-detail-delete')->middleware('auth:admin');
+
+//
+
+
+// admin logout
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 

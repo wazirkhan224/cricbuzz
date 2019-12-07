@@ -34,34 +34,21 @@
                                         </div>
                                     @endif
                                 </p>
-                                <form class="live-stream-form" method="post" action="{{route('admin_tour-detail')}}" enctype="multipart/form-data">
+                                <form class="live-stream-form" method="post" action="{{route('admin-tour-detail')}}" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="position-relative form-group">
                                         <label for="title" class="">upcoming  Tours</label>
-                                    <select class="mb-2 form-control" name="title">
+                                    <select class="mb-2 form-control" name="cat_tours_id">
                                         <option>Select Tour</option>
-                                       @foreach($tourcat as $cat)
-                                        <option>{{$cat->title}}</option>
-                                       @endforeach
+                                        @foreach($tourcat as $cat)
+                                            <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                        @endforeach
                                     </select>
                                     </div>
-
                                     <div class="position-relative form-group">
-                                        <label for="title" class="">Tour  Categories</label>
-                                        <select class="mb-2 form-control" name="tour_category">
-                                            <option>Select Category</option>
-                                            <option>international tours</option>
-                                            <option>international tournaments</option>
-                                            <option>ICC tournaments</option>
-                                            <option>T20 tournaments</option>
-                                            <option>T20 tournaments</option>
-                                            <option>associate tours</option>
-                                        </select>
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="description" class="">Category  Description</label>
-                                        <textarea class="form-control" name="description" id="description" placeholder="Enter  Description" rows="3"></textarea>
+                                        <label for="description" class="">Category  Name</label>
+                                        <input type="text" name="title" id="title" placeholder="Enter  Title" class="form-control">
                                     </div>
                                     <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
                                 </form>
@@ -84,8 +71,6 @@
                                         <tr class="text-center">
                                             <th>Id</th>
                                             <th>Title</th>
-                                            <th>Tour Category</th>
-                                            <th>description</th>
                                             <th >Action</th>
                                         </tr>
                                         </thead>
@@ -94,8 +79,6 @@
                                         <tr class="text-center">
                                             <td>{{ $tour->id}}</td>
                                             <td>{{ $tour->title}}</td>
-                                            <td>{{ $tour->tour_category}}</td>
-                                            <td>{{$tour->description}}</td>
 
                                             <td >
                                                 <a href="{{route('admin_tour-edit',$tour->id)}}"><i class="fas fa-edit" style="color: green !important;"></i></a>

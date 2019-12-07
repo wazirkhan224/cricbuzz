@@ -49,220 +49,184 @@
         </div>
     </nav>
 
-                    <!--paralex-->
-                    <div class="pimg2">
-                        <div class="ptext" >
-                          <a href="#" style="text-decoration: none;"> <span class="border trans" >
-                           Upcoming Series
-                          </span>
-                        </a>
-                        </div>
-                      </div>
+    <!--paralex-->
+    <div class="pimg2">
+        <div class="ptext" >
+          <a href="#" style="text-decoration: none;"> <span class="border trans" >
+           Upcoming Series
+          </span>
+        </a>
+        </div>
+      </div>
 
 
 <!--blog-->
-<section>
-  <div style="overflow: hidden">
-      <div class="row">
-          <div class="col-md-12 ">
-              <nav class="bg-success">
-                  <div class="nav nav-tabk nav-fill " id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><h3 class="text-center" style="color: white;"> Current Cricket</h3></a>
-                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> <h3  class="text-center" style="color: white; ">Future Series</h3></a>
-                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> <h3  class="text-center" style="color: white;"> Recently Concluded</h3></a>
-                  </div>
-              </nav>
-              <div class="tab-content" id="nav-tabContent">
-                <!--Current Cricket-->
-                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                      <div class="container">
-                       <div class="row pb-4">
-                         <div class="col-md-6 mt-5">
-                           <h4>INTERNATIONAL TOURS
-                            </h4>
-                           <ul>
-                           <a href="#" class="txt"><li>Pakistan Vs Sirilanka</li></a>
-                           <a href="#" class="txt"><li>India Vs South Africa</li></a>
-                           <a href="#" class="txt"><li>Australia Women in West Indies</li></a>
-                           <a href="#" class="txt"><li>Afghanistan Vs Ireland</li></a>
-                           <a href="#" class="txt"><li>Englad Vs Australia</li></a>
-                           <a href="#" class="txt"><li>Bangladesh A in Sri Lanka</li></a>
-                           </ul>
-                           <hr>
-                           <h4>INTERNATIONAL TOURNAMENTS</h4>
-                           <ul>
-                           <a href="#" class="txt"><li>ICC Men's T20 World Cup Qualifier</li></a>
-                           <a href="#" class="txt"><li>ICC World Test Championship</li></a>
-                           <a href="#" class="txt"><li>Bangladesh Vs Sirilanka</li></a>
-                           <a href="#" class="txt"><li>Afghanistan Vs Ireland</li></a>
-                           <a href="#" class="txt"><li>Englad Vs Australia</li></a>
-                           <a href="#" class="txt"><li>Pakistan Vs Sirilanka</li></a>
-                           </ul>
-                         </div>
+    <section>
+        <div style="overflow: hidden">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <nav class="bg-success">
+                        <div class="nav nav-tabk nav-fill " id="nav-tab" role="tablist">
+                            @foreach($tour_category as $cat)
+                            <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home-{{$cat->id}}" role="tab" aria-controls="nav-home" aria-selected="true"><h3 class="text-center" style="color: white;"> {{$cat->title}}</h3></a>
+{{--                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> <h3  class="text-center" style="color: white; ">Future Series</h3></a>--}}
+{{--                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> <h3  class="text-center" style="color: white;"> Recently Concluded</h3></a>--}}
+                            @endforeach
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <!--Current Cricket-->
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="container">
+                                <div class="row pb-4">
+                                    <div class="col-md-6 mt-5">
+                                        @foreach($tour_category as $catt)
+                                            @foreach($tour_category as $cattt)
+                                        <h4>
+                                            {{$catt->TourDesc[0]->title}}
+                                        </h4>
 
+                                        <ul>
+                                            <a href="#" class="txt"><li>{{$cattt->TourDescDetail['0']->description}}</li></a>
 
-                         <div class="col-md-6 mt-5" style="border-left:2px solid #006400;">
-                            <h4>ICC TOURNAMENTS</h4>
-                            <ul>
-                            <a href="#" class="txt"><li>Men's Cricket World Cup League 2</li></a>
-                            <a href="#" class="txt"><li>ICC World Test Championship</li></a>
-                            <a href="#" class="txt"><li>CWC Challenge League Group A</li></a>
-                            <a href="#" class="txt"><li>ICC Women's Championship</li></a>
+                                            <a href="#" class="txt"><li>Pakistan Vs Sirilanka</li></a>
+                                            <a href="#" class="txt"><li>India Vs South Africa</li></a>
+                                            <a href="#" class="txt"><li>Australia Women in West Indies</li></a>
+                                            <a href="#" class="txt"><li>Afghanistan Vs Ireland</li></a>
+                                            <a href="#" class="txt"><li>Englad Vs Australia</li></a>
+                                            <a href="#" class="txt"><li>Bangladesh A in Sri Lanka</li></a>
+                                        </ul>
 
-                            </ul>
-                            <hr>
-                            <h4>T20 TOURNAMENTS</h4>
-                            <ul>
-                            <a href="#" class="txt"><li>Vitality Blast</li></a>
-                            <a href="#" class="txt"><li>Women's Cricket Super League</li></a>
-                            <a href="#" class="txt"><li>CWC Challenge League Group A</li></a>
-                            <a href="#" class="txt"><li>ICC Women's Championship</li></a>
-
-                            </ul>
-                            <hr>
-                            <h4>T20 TOURNAMENTS</h4>
-                            <ul>
-                            <a href="#" class="txt"><li> ASSOCIATE CRICKET</li></a>
-                            <a href="#" class="txt"><li>Oman Pentangular</li></a>
-                            <a href="#" class="txt"><li>Qatar v Jersey</li></a>
-                            <a href="#" class="txt"><li>Women's T20 East Asia Cup</li></a>
-
-                            </ul>
-
-
-
+                                            @endforeach
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
-                       </div>
-                        </div>
+                        <!--Future Series-->
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="container">
+                                <div class="row pb-4">
+                                    <div class="col-md-6 mt-5">
+                                        <h4>INTERNATIONAL TOURS   </h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>Sri Lanka tour of Australia, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>England tour of New Zealand, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>India Women tour of West Indies, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>Bangladesh tour of India, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>ACC Emerging Teams Cup, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>Pakistan tour of Australia, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>Afghanistan v West Indies, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>West Indies tour of India, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>England tour of South Africa, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>Sri Lanka tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Zimbabwe tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Australia tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>India tour of New Zealand, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>SA Women tour of New Zealand, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Australia tour of South Africa, Feb 2020</li></a>
+                                        </ul>
+                                        <hr>
+                                        <h4>INTERNATIONAL TOURNAMENTS</h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>ICC Men's T20 World Cup Qualifier</li></a>
+                                            <a href="#" class="txt"><li>Australia Women's TRI Series, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>ICC Women's T20 World Cup, 2020</li></a>
+                                            <a href="#" class="txt"><li>ICC Men's T20 World Cup, 2020</li></a>
 
-                </div>
-                <!--Future Series-->
-                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                      <div class="container">
-                          <div class="row pb-4">
-                            <div class="col-md-6 mt-5">
-                              <h4>INTERNATIONAL TOURS   </h4>
-                              <ul>
-                              <a href="#" class="txt"><li>Sri Lanka tour of Australia, Oct 2019</li></a>
-                              <a href="#" class="txt"><li>England tour of New Zealand, Oct 2019</li></a>
-                              <a href="#" class="txt"><li>India Women tour of West Indies, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>Bangladesh tour of India, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>ACC Emerging Teams Cup, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>Pakistan tour of Australia, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>Afghanistan v West Indies, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>West Indies tour of India, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>England tour of South Africa, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>Sri Lanka tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Zimbabwe tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Australia tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>India tour of New Zealand, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>SA Women tour of New Zealand, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Australia tour of South Africa, Feb 2020</li></a>
-                              </ul>
-                              <hr>
-                              <h4>INTERNATIONAL TOURNAMENTS</h4>
-                              <ul>
-                              <a href="#" class="txt"><li>ICC Men's T20 World Cup Qualifier</li></a>
-                              <a href="#" class="txt"><li>Australia Women's TRI Series, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>ICC Women's T20 World Cup, 2020</li></a>
-                              <a href="#" class="txt"><li>ICC Men's T20 World Cup, 2020</li></a>
+                                        </ul>
+                                    </div>
 
-                              </ul>
+
+                                    <div class="col-md-6 mt-5" style="border-left:2px solid #006400;">
+                                        <h4>ASSOCIATE TOURS/TOURNEYS</h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>Iberia Cup, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>Malta T20I Series, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>South American Men's Championships, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>South American Women's Championships, Oct 2019</li></a>
+
+                                        </ul>
+                                        <hr>
+
+
+
+
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <div class="col-md-6 mt-5" style="border-left:2px solid #006400;">
-                               <h4>ASSOCIATE TOURS/TOURNEYS</h4>
-                               <ul>
-                               <a href="#" class="txt"><li>Iberia Cup, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>Malta T20I Series, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>South American Men's Championships, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>South American Women's Championships, Oct 2019</li></a>
-
-                               </ul>
-                               <hr>
 
 
+                        </div>
+                        <!--Reecently Concluded-->
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="container">
+                                <div class="row pb-4">
+                                    <div class="col-md-6 mt-5">
+                                        <h4>INTERNATIONAL TOURS   </h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>Sri Lanka tour of Australia, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>England tour of New Zealand, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>India Women tour of West Indies, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>Bangladesh tour of India, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>ACC Emerging Teams Cup, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>Pakistan tour of Australia, Nov 2019</li></a>
+                                            <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>Afghanistan v West Indies, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>West Indies tour of India, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>England tour of South Africa, Dec 2019</li></a>
+                                            <a href="#" class="txt"><li>Sri Lanka tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Zimbabwe tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Australia tour of India, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>India tour of New Zealand, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>SA Women tour of New Zealand, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>Australia tour of South Africa, Feb 2020</li></a>
+                                        </ul>
+                                        <hr>
+                                        <h4>INTERNATIONAL TOURNAMENTS</h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>ICC Men's T20 World Cup Qualifier</li></a>
+                                            <a href="#" class="txt"><li>Australia Women's TRI Series, Jan 2020</li></a>
+                                            <a href="#" class="txt"><li>ICC Women's T20 World Cup, 2020</li></a>
+                                            <a href="#" class="txt"><li>ICC Men's T20 World Cup, 2020</li></a>
+
+                                        </ul>
+                                    </div>
 
 
-                           </div>
-                          </div>
-                           </div>
+                                    <div class="col--md-6 mt-5" style="border-left:2px solid #006400;">
+                                        <h4>ASSOCIATE TOURS/TOURNEYS</h4>
+                                        <ul>
+                                            <a href="#" class="txt"><li>Iberia Cup, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>Malta T20I Series, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>South American Men's Championships, Oct 2019</li></a>
+                                            <a href="#" class="txt"><li>South American Women's Championships, Oct 2019</li></a>
+
+                                        </ul>
+                                        <hr>
 
 
 
 
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
-                  <!--Reecently Concluded-->
-                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                      <div class="container">
-                          <div class="row pb-4">
-                            <div class="col-md-6 mt-5">
-                              <h4>INTERNATIONAL TOURS   </h4>
-                              <ul>
-                              <a href="#" class="txt"><li>Sri Lanka tour of Australia, Oct 2019</li></a>
-                              <a href="#" class="txt"><li>England tour of New Zealand, Oct 2019</li></a>
-                              <a href="#" class="txt"><li>India Women tour of West Indies, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>Bangladesh tour of India, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>ACC Emerging Teams Cup, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>Pakistan tour of Australia, Nov 2019</li></a>
-                              <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>Afghanistan v West Indies, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>West Indies tour of India, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>New Zealand tour of Australia, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>England tour of South Africa, Dec 2019</li></a>
-                              <a href="#" class="txt"><li>Sri Lanka tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Zimbabwe tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Australia tour of India, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>India tour of New Zealand, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>SA Women tour of New Zealand, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>Australia tour of South Africa, Feb 2020</li></a>
-                              </ul>
-                              <hr>
-                              <h4>INTERNATIONAL TOURNAMENTS</h4>
-                              <ul>
-                              <a href="#" class="txt"><li>ICC Men's T20 World Cup Qualifier</li></a>
-                              <a href="#" class="txt"><li>Australia Women's TRI Series, Jan 2020</li></a>
-                              <a href="#" class="txt"><li>ICC Women's T20 World Cup, 2020</li></a>
-                              <a href="#" class="txt"><li>ICC Men's T20 World Cup, 2020</li></a>
+        </div>
 
-                              </ul>
-                            </div>
-
-
-                            <div class="col--md-6 mt-5" style="border-left:2px solid #006400;">
-                               <h4>ASSOCIATE TOURS/TOURNEYS</h4>
-                               <ul>
-                               <a href="#" class="txt"><li>Iberia Cup, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>Malta T20I Series, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>South American Men's Championships, Oct 2019</li></a>
-                               <a href="#" class="txt"><li>South American Women's Championships, Oct 2019</li></a>
-
-                               </ul>
-                               <hr>
-
-
-
-
-                           </div>
-                          </div>
-                           </div>
-
-
-
-                  </div>
-                </div>
-              </div>
-          </div>
-      </div>
-
-</section>
-
-
-
+    </section>
 
 
 

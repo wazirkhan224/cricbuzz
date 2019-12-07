@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TourDescDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -163,63 +164,45 @@ class AdminController extends Controller
     {
         $tourcat= CatTour::all();
         $tourdetail=TourDesc::all();
-        return view('admin.dashboard.tours.upcoming-tour',compact('tourcat','tourdetail'));
+        return view('admin.dashboard.tours.catDescription.index',compact('tourcat','tourdetail'));
     }
 
     public function tourDetail(Request $request)
     {
-        $tourcat= CatTour::all();
-
-        $phone1 = CatTour::find(1)->title;
-        $phone2 = CatTour::find(2)->title;
-        $phone3 = CatTour::find(3)->title;
-
         $request->validate([
-            'title' => 'required',
-            'tour_category' => 'required',
-            'description' => 'required'
+            'cat_tours_id' => 'required',
+            'title' => 'required'
         ]);
 
-        //create post
-        $tour = new TourDesc;
-        if($a1= $tour->title = Input::get('title')==$phone1)
-        {
-            $tour->cat_tours_id = 1;
-        }
-        if($a1= $tour->title = Input::get('title')==$phone2)
-        {
-            $tour->cat_tours_id = 2;
-        }
-        if($a1= $tour->title = Input::get('title')==$phone3)
-        {
-            $tour->cat_tours_id = 3;
-        }
-        $tour->title = Input::get('title');
-        $tour->tour_category = Input::get('tour_category');
-        $tour->description = Input::get('description');
-        $tour->save();
+//        $dg = new TourDesc();
+//        $dg->create($request->all());
+//        return redirect()->back()->with('success', 'Created New Tour Record Successfully!');
+
+        $tourdesccreat = new TourDesc();
+        $tourdesccreat->cat_tours_id =$request->get('cat_tours_id');
+        $tourdesccreat->title =$request->get('title');
+        $tourdesccreat->save();
         return redirect()->back()->with('success', 'Created New Tour Record Successfully!');
     }
 
     public function editTour(Request $request,$id)
     {
+        $tourcat= CatTour::all();
         $tourupdate=TourDesc::find($id);
-        return view('admin.dashboard.tours.edit-upcoming-tour',compact('tourupdate'));
+        return view('admin.dashboard.tours.catDescription.edit',compact('tourupdate','tourcat'));
     }
 
     public function updateTour(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
-            'tour_category' =>'required',
-            'description' => 'required'
+            'cat_tours_id'=>'required'
+
         ]);
 
         $tourupdate=TourDesc::find($id);
 
         $tourupdate->title =$request->get('title');
-        $tourupdate->tour_category =$request->get('tour_category');
-        $tourupdate->description =$request->get('description');
         $tourupdate->save();
         return redirect('/admin/tour')->with('success', 'Tour  updated Successfully!');
     }
@@ -230,4 +213,97 @@ class AdminController extends Controller
         $tourdelete->delete();
         return redirect()->back()->with('success', 'Tour Record   deleted!');
     }
+
+//    tourcategory
+    public function tourCategory(Request $request)
+    {
+        $tours=CatTour::all();
+        return view('admin.dashboard.tours.tourCategory.index',compact('tours'));
+    }
+
+    public function createTourCategory(Request $request)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+        $tourCategory= new CatTour();
+        $tourCategory->title =$request->get('title');
+        $tourCategory->save();
+        return redirect()->back()->with('success','successfully created new record');
+    }
+    public function editTourCategory($id)
+    {
+        $edittours=CatTour::find($id);
+        return view('admin.dashboard.tours.tourCategory.edit',compact('edittours'));
+    }
+
+    public function updateTourCategory(Request $request,$id)
+    {
+        $updatetours=CatTour::find($id);
+        $updatetours->title = $request->get('title');
+        $updatetours->save();
+        return redirect('/admin/tour-category')->with('success', 'Updated Record  Successfully!');
+    }
+
+    public function deleteTourCategory($id)
+    {
+        $delettours=CatTour::find($id);
+        $delettours->delete();
+        return redirect()->back()->with('success','successfully Delete Record');
+    }
+
+    //Tour Detail
+    public function viewTourDetail()
+    {
+        $tourcat=CatTour::all();
+        $tourdesc=TourDesc::all();
+        $tourrecod=TourDescDetail::with('tourdesc','tourCat')->get();
+//        dd($tourrecod);
+        return view('admin.dashboard.tours.tourDetail.index',compact('tourcat','tourdesc','tourrecod'));
+    }
+
+    public function createTourDetail(Request $request)
+    {
+        $request->validate([
+            'description' => 'required'
+        ]);
+
+        $tourdeatil = new TourDescDetail;
+        $tourdeatil->cat_tours_id =$request->get('cat_tours_id');
+        $tourdeatil->tour_desc_id =$request->get('tour_desc_id');
+        $tourdeatil->description =$request->get('description');
+        $tourdeatil->save();
+        return redirect()->back()->with('success','successfully created new record');
+    }
+
+    public function editTourDetail($id)
+    {
+        $tourcat=CatTour::ALL();
+        $tourdesc=TourDesc::all();
+        $toured=TourDescDetail::find($id);
+        return view('/admin.dashboard.tours.tourDetail.edit',compact('toured','tourcat','tourdesc'));
+    }
+
+    public function updateTourDetail(Request $request,$id)
+    {
+        $request->validate([
+            'description' => 'required'
+        ]);
+
+        $tourddetail=TourDescDetail::Find($id);
+        $tourddetail->description =$request->get('description');
+        $tourddetail->cat_tours_id =$request->get('cat_tours_id');
+        $tourddetail->tour_desc_id =$request->get('tour_desc_id');
+        $tourddetail->save();
+        return redirect('/admin/tour-detail')->with('success', 'Updated Record  Successfully!');
+    }
+    public function deleteTourDetail($id)
+    {
+        $tourddelete=TourDescDetail::find($id);
+        $tourddelete->delete();
+        return redirect()->back()->with('success','successfully Delete Record');
+    }
+
+//
 }

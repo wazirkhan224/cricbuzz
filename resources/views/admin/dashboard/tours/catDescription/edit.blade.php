@@ -32,34 +32,26 @@
                                         <div class="alert alert-success">
                                             {{ session()->get('success') }}
                                         </div>
-                                    @endif
-                                    </p>
-                                    <form class="live-stream-form" method="post" action="{{route('admin_tour-update',$tourupdate->id)}}" enctype="multipart/form-data">
-                                        @method('put')
-                                        @csrf
-
-                                        <div class="position-relative form-group">
-                                            <label for="title" class="">upcoming  Tours</label>
-                                            <select class="mb-2 form-control" name="title">
-
-                                                    <option >
-                                                        future_series</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="position-relative form-group">
-                                            <label for="title" class="">Tour  Categories</label>
-                                            <select class="mb-2 form-control" name="tour_category">
-
-                                                <option>T20 tournaments</option>
-                                            </select>
-                                        </div>
-                                        <div class="position-relative form-group">
-                                            <label for="description" class="">Body</label>
-                                            <textarea class="form-control" name="description" id="description" placeholder="Enter  Description" rows="3">{{$tourupdate->description}}</textarea>
-                                        </div>
-                                        <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
-                                    </form>
+                                        @endif
+                                        </p>
+                                        <form class="live-stream-form" method="post" action="{{route('admin_tour-update',$tourupdate->id)}}" enctype="multipart/form-data">
+                                            @method('put')
+                                            @csrf
+                                            <div class="position-relative form-group">
+                                                <label for="title" class="">upcoming  Tours</label>
+                                                <select class="mb-2 form-control" name="cat_tours_id">
+                                                    <option>Select Tour</option>
+                                                        @foreach($tourcat as $cat)
+                                                        <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                                        @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <label for="title" class="">Category  Name</label>
+                                                <input type="text" name="title" id="title" placeholder="Enter  Title" class="form-control" value="{{$tourupdate->title}}">
+                                            </div>
+                                            <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
+                                        </form>
 
                                 </div>
                             </div>

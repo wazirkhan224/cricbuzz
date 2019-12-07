@@ -16,14 +16,7 @@ class CreateTourDescsTable extends Migration
         Schema::create('tour_descs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger ('cat_tours_id');
-
-            $table->foreign('cat_tours_id')
-                ->references('id')->on('cat_tours')
-                ->onDelete('cascade');
-
             $table->string('title');
-            $table->string('tour_category');
-            $table->string('description');
             $table->timestamps();
         });
     }
