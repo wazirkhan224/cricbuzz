@@ -94,6 +94,7 @@
                                                     <td>{{$tour->id}}</td>
                                                     <td>{{$tour->tourCat['title']}}</td>
                                                     <td>{{$tour->tourdesc['title']}}</td>
+
                                                     <td>{{$tour->description}}</td>
                                                     <td>
                                                         <a href="{{route('admin_tour-detail-edit',$tour->id)}}"><i class="fas fa-edit" style="color: green !important;"></i></a>

@@ -38,6 +38,10 @@
                                             <label for="title" class="">Video Link</label>
                                             <input type="text" name="video_link" id="video_link" placeholder="title" class="form-control" value="{{$editvideo->video_link}}">
                                         </div>
+                                        <div class="position-relative form-group">
+                                            <label for="description" class="">Video Description</label>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Video Description" rows="3">{{$editvideo->description}}</textarea>
+                                        </div>
                                         <button class="mt-1 btn btn-primary" type="Submit">Update</button>
                                     </form>
 

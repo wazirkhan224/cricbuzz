@@ -37,6 +37,10 @@
                                 <label for="video_link" class="">Video Link</label>
                                 <input type="text" name="video_link" id="video_link" placeholder="Enter Video Link" class="form-control">
                             </div>
+                            <div class="position-relative form-group">
+                                <label for="description" class="">Video Description</label>
+                                <textarea class="form-control" name="description" id="description" placeholder="Video Description" rows="3"></textarea>
+                            </div>
                             <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
                         </form>
 
@@ -68,6 +72,7 @@
                                         <td>{{$videos->id}}</td>
                                         <td>{{$videos->title}}</td>
                                         <td>{{$videos->video_link}}</td>
+                                        <td>{{$videos->description}}</td>
                                         <td>
                                             <a href="{{ route('admin_videos-edit', $videos->id)}}"><i class="fas fa-edit" style="color: green !important;"></i></a>
                                             <a href="{{ route('admin_videos-delete', $videos->id)}}"><i class="fa fa-trash" aria-hidden="true" style="color: red !important;"></i></a>

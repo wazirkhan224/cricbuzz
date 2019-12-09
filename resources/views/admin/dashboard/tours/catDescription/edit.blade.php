@@ -50,7 +50,7 @@
                                                 <label for="title" class="">Category  Name</label>
                                                 <input type="text" name="title" id="title" placeholder="Enter  Title" class="form-control" value="{{$tourupdate->title}}">
                                             </div>
-                                            <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
+                                            <button class="mt-1 btn btn-primary" type="Submit">Update</button>
                                         </form>
 
                                 </div>

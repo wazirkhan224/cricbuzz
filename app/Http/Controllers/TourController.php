@@ -18,15 +18,6 @@ class TourController extends Controller
     public function index()
     {
         $tour_category= CatTour::with('nextview')->get();
-//        $tour_category_desc=TourDesc::all();
-//        $tour_detail= TourDescDetail::all();
-//
-//        $catdesccurrent = TourDesc::where('cat_tours_id', '1')->get();
-//        $catdesfcurrent = TourDesc::where('cat_tours_id', '2')->get();
-//        $catdescccurrent = TourDesc::where('cat_tours_id', '3')->get();
-
-
-
         return view('\themes\home\upcoming',compact('tour_category'));
     }
 

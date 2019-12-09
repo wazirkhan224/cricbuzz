@@ -17,6 +17,7 @@ class CreateAdminsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('live_link');
             $table->string('password');
             $table->integer('role');
             $table->rememberToken();

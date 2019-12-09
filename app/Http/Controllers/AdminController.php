@@ -56,6 +56,9 @@ class AdminController extends Controller
         $vidoe = new Video;
         $vidoe->title = Input::get('title');
         $vidoe->video_link = Input::get('video_link');
+        $vidoe->description = Input::get('description');
+
+
         $vidoe->save();
         return redirect()->back();
     }
@@ -75,6 +78,7 @@ class AdminController extends Controller
         $updatevideo = Video::find($id);
         $updatevideo->title =  $request->get('title');
         $updatevideo->video_link = $request->get('video_link');
+        $updatevideo->description = $request->get('description');
         $updatevideo->save();
         return redirect('/admin/video');
     }
