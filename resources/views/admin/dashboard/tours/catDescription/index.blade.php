@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
 
-
 <div class="app-main__outer">
     <div class="app-main__inner">
         <div class="app-page-title">
@@ -36,7 +35,6 @@
                                 </p>
                                 <form class="live-stream-form" method="post" action="{{route('admin-tour-detail')}}" enctype="multipart/form-data">
                                     @csrf
-
                                     <div class="position-relative form-group">
                                         <label for="title" class="">upcoming  Tours</label>
                                     <select class="mb-2 form-control" name="cat_tours_id">
@@ -52,7 +50,6 @@
                                     </div>
                                     <button class="mt-1 btn btn-primary" type="Submit">Submit</button>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -79,7 +76,6 @@
                                         <tr class="text-center">
                                             <td>{{ $tour->id}}</td>
                                             <td>{{ $tour->title}}</td>
-
                                             <td >
                                                 <a href="{{route('admin_tour-edit',$tour->id)}}"><i class="fas fa-edit" style="color: green !important;"></i></a>
                                                 <a href="{{route('admin_tour-delete',$tour->id)}}"><i class="fa fa-trash" aria-hidden="true" style="color: red !important;"></i></a>
@@ -95,16 +91,14 @@
                 </div>
             </div>
             <!-- end of the container  -->
+@endsection
 
-
-            @endsection
-
-            @section('scripts')
-            <script>
-                $(document).ready(function() {
-                    $('#example').DataTable();
-                } );
-            </script>
-            @endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+@endsection
 
 

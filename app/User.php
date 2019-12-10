@@ -6,11 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
-    use Notifiable;
+    use Notifiable,Commenter;
 
     /**
      * The attributes that are mass assignable.

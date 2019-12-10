@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
-
+use DB;
+use App\Comment;
 use validate;
 use App\Admin;
 use Redirect;
@@ -20,17 +21,14 @@ use App\CatTour;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('admin.dashboard.index');
     }
 
 // live link
+///////////////
     public function liveStreaming()
     {
         $record= Admin::all();
@@ -45,6 +43,7 @@ class AdminController extends Controller
     }
 
 // videos
+///////////////
     public function vidoes()
     {
         $video= Video::all();
@@ -57,8 +56,6 @@ class AdminController extends Controller
         $vidoe->title = Input::get('title');
         $vidoe->video_link = Input::get('video_link');
         $vidoe->description = Input::get('description');
-
-
         $vidoe->save();
         return redirect()->back();
     }
@@ -75,6 +72,7 @@ class AdminController extends Controller
             'title'=>'required',
             'video_link'=>'required'
         ]);
+
         $updatevideo = Video::find($id);
         $updatevideo->title =  $request->get('title');
         $updatevideo->video_link = $request->get('video_link');
@@ -89,6 +87,7 @@ class AdminController extends Controller
         $deletevideo->delete();
         return redirect()->back();
     }
+
 //posts
     public function post()
     {
@@ -128,11 +127,10 @@ class AdminController extends Controller
            'description' => 'required'
         ]);
         $posts =Post::find($id);
-//
+
         if (file_exists( public_path() . '/images/' .$request->file)) {
             $photoName =$posts->file;
         } else {
-
         //image
         $photoName = time().'.'.$request->file->getClientOriginalExtension();
         $request->file->move(public_path('images'), $photoName);
@@ -151,19 +149,40 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Delete Post !');
     }
 
-    public function showPost($slug,$id)
+    public function postComment($id)
     {
-        $slug =Post::find($slug);
-        $latestp = Post::latest()->orderBy('id', 'desc')->first();
-        return view('themes.home.readmore',compact('slug','latestp'));
+        $postcomments=Post::find($id);
+        $comment =Comment::All();
+
+        $comments = Comment::where('commentable_id', '=', $id)->get();
+        return view('admin.dashboard.posts.post_comments',compact('comments'));
     }
-    public function showPostDetail($slug,$id)
+
+    public function editComment($id)
     {
-        $post= Post::find($slug);
-        return view('themes.home.readmore2',compact('post'));
+        $editcomment=Comment::find($id);
+        return view('admin.dashboard.posts.edit_comments',compact('editcomment'));
+    }
+    public function updateComment(Request $request,$id)
+    {
+        $request->validate([
+            'comment' => 'required'
+        ]);
+        $updatecomment =Comment::find($id);
+        $updatecomment->comment=$request->get('comment');
+        $updatecomment->save();
+        return redirect('/admin/post')->with('success', 'Updated  Comment Success Fully!');
+    }
+
+    public function deleteComment($id)
+    {
+        $deletecomment=Comment::find($id);
+        $deletecomment->delete();
+        return redirect()->back()->with('success', 'Delete Post Comment!');
     }
 
 //Upcoming Tour
+///////////////
     public function upcomentTour()
     {
         $tourcat= CatTour::all();
@@ -177,10 +196,6 @@ class AdminController extends Controller
             'cat_tours_id' => 'required',
             'title' => 'required'
         ]);
-
-//        $dg = new TourDesc();
-//        $dg->create($request->all());
-//        return redirect()->back()->with('success', 'Created New Tour Record Successfully!');
 
         $tourdesccreat = new TourDesc();
         $tourdesccreat->cat_tours_id =$request->get('cat_tours_id');
@@ -201,11 +216,9 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required',
             'cat_tours_id'=>'required'
-
         ]);
 
         $tourupdate=TourDesc::find($id);
-
         $tourupdate->title =$request->get('title');
         $tourupdate->save();
         return redirect('/admin/tour')->with('success', 'Tour  updated Successfully!');
@@ -218,7 +231,8 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Tour Record   deleted!');
     }
 
-//    tourcategory
+//tourcategory
+///////////////
     public function tourCategory(Request $request)
     {
         $tours=CatTour::all();
@@ -236,6 +250,7 @@ class AdminController extends Controller
         $tourCategory->save();
         return redirect()->back()->with('success','successfully created new record');
     }
+
     public function editTourCategory($id)
     {
         $edittours=CatTour::find($id);
@@ -263,7 +278,6 @@ class AdminController extends Controller
         $tourcat=CatTour::all();
         $tourdesc=TourDesc::all();
         $tourrecod=TourDescDetail::with('tourdesc','tourCat')->get();
-//        dd($tourrecod);
         return view('admin.dashboard.tours.tourDetail.index',compact('tourcat','tourdesc','tourrecod'));
     }
 
@@ -302,12 +316,11 @@ class AdminController extends Controller
         $tourddetail->save();
         return redirect('/admin/tour-detail')->with('success', 'Updated Record  Successfully!');
     }
+
     public function deleteTourDetail($id)
     {
         $tourddelete=TourDescDetail::find($id);
         $tourddelete->delete();
         return redirect()->back()->with('success','successfully Delete Record');
     }
-
-//
 }

@@ -49,26 +49,52 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
                 </form>
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">
-                    <img src="Images/profile.png" width="35" id="prof" >
-                </a>
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                                <img src="Images/profile.png" width="35" id="prof" >
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+
             </div>
         </div>
     </nav>
             <!--Slider-->
-            
+
 
                     <!--paralex-->
                     <div class="pimg1">
                         <div class="ptext" >
                           <a href="#" style="text-decoration: none;"> <span class="border trans" >
-                           Blog           
+                           Blog
                           </span>
                         </a>
                         </div>
                       </div>
-                      
-                        
+
+
 <!--blog-->
                 <div class="container-fluid bg-light">
 
@@ -77,23 +103,28 @@
                                 <div class="col-md-8">
 
                                     <div class="card wow animated fadeInUp">
-                                        <a href="#" style="text-decoration: none;"> 
+                                        <a href="#" style="text-decoration: none;">
                                            <img src="{{asset('images/'.$post->file)}}" alt="card-1" class="card-img-top">
                                         </div>
                                             <div class="card-body">
-                                            
+
                                           </a>
 
                                           <div class="">
                                                 <header> <h3 class="text-success text-center">{{$post->title}}</h3> </header>
-                                                       <article><p class="font">
+                                                       <article>
+                                                           <p class="font">
                                                         {{str_limit($post->description,200)}}
-                                                           </p></article> 
-                                              </div>                                        
+                                                           </p>
+                                                       </article>
+                                              <p>
+                                                  @comments(['model' => $post])
+                                              </p>
+                                              </div>
                                     </div>
-                                  
+
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                         <h1 class="text-center text-success">Recent Post</h1>
                                         <div class="card wow animated fadeInRight mt-4">
@@ -110,10 +141,10 @@
                                         <button class="blogButton" href="#">read more</button>
                                     </div>
                                 </div>
-                                
+
                         </div>
-                        
-                        
+
+
                 </div>
                 <br>
                 <br>
@@ -144,7 +175,7 @@
         document.getElementById('vid').src  = '/images/video2.png';
         document.getElementById('blog').src  = '/images/blog2.png';
         document.getElementById('series').src  = '/images/series2.png';
-        
+
 
       }else if(count<500){
         document.getElementById('navmm').style.backgroundColor = 'white' ;
@@ -160,7 +191,7 @@
         document.getElementById('vid').src  = '/images/video.png';
         document.getElementById('blog').src  = '/images/blog.png';
         document.getElementById('series').src  = '/images/series.png';
-        
+
       }
     }
   </script>
@@ -194,13 +225,13 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </div>
- 
 
- 
+
+
 <!--jquery-->
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 </script>
@@ -208,7 +239,7 @@
 <script src="wow.min.js"></script>
 <script>
   new WOW().init();
-  </script> 
+  </script>
   <!-- login script -->
  <script>
 

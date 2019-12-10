@@ -40,9 +40,11 @@ Route::prefix('admin')->group(function()
     Route::put('/post-update/{id}','AdminController@updatePost')->name('admin_post-update')->middleware('auth:admin');
     Route::get('/post-delete/{id}','AdminController@deletePost')->name('admin_post-delete')->middleware('auth:admin');
 
-    // Read more post option
-    Route::get('/post-show/{id}/{slug}','AdminController@showPost')->name('admin_post-show')->middleware('auth:admin');
-    Route::get('/post-show-detail/{id}/{slug}','AdminController@showPostDetail')->name('admin_post-showw')->middleware('auth:admin');
+    //post comment
+    Route::get('/post-comment/{id}/','AdminController@postComment')->name('admin_post-comment')->middleware('auth:admin');
+    Route::get('/comment-edit/{id}/','AdminController@editComment')->name('admin_comment-edit')->middleware('auth:admin');
+    Route::put('/comment-update/{id}/','AdminController@updateComment')->name('admin_update_comment')->middleware('auth:admin');
+    Route::get('/comment-delete/{id}/','AdminController@deleteComment')->name('admin_delete_comment')->middleware('auth:admin');
 
     //upcoming series
     Route::get('/tour/','AdminController@upcomentTour')->name('admin_upcoming-tour')->middleware('auth:admin');
@@ -65,8 +67,6 @@ Route::prefix('admin')->group(function()
     Route::put('/tourdetail-update/{id}','AdminController@updateTourDetail')->name('admin_tour-detail-update')->middleware('auth:admin');
     Route::get('/tourdetail-delete/{id}','AdminController@deleteTourDetail')->name('admin_tour-detail-delete')->middleware('auth:admin');
 
-//
-
 
 // admin logout
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
@@ -79,4 +79,9 @@ Route::get('/live', 'HomeController@stream')->name('live');
 Route::get('/video', 'VideoController@index')->name('videos');
 
 Route::get('/tour', 'TourController@index')->name('tours');
+
+// Post Controller
 Route::get('/blog', 'PostController@index')->name('blog');
+Route::get('/post-show/{id}/{slug}','PostController@showPost')->name('admin_post-show');
+Route::get('/post-show-detail/{id}/{slug}','PostController@showPostDetail')->name('admin_post-showw');
+

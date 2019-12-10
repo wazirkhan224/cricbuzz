@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
 
-
 <div class="app-main__outer">
 <div class="app-main__inner">
    <div class="app-page-title">
@@ -17,10 +16,8 @@
                         Admin Dashboard
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
-        <!-- end of header  -->  
+        <!-- end of header  -->
     </div>
-
-
 @endsection
